@@ -89,7 +89,7 @@ namespace Scp650Plugin
                 {
                     ServerConsole.AddLog(Scp650Plugin.Instance.Config.SchematicName + " Spawned in: " + MapGeneration.RoomIdUtils.RoomAtPosition(pos).name);
                 }
-                MapEditorReborn.API.Features.ObjectSpawner.SpawnSchematic(Scp650Plugin.Instance.Config.SchematicName, pos, Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f)), isStatic: false);
+                MapEditorReborn.API.Features.ObjectSpawner.SpawnSchematic(Scp650Plugin.Instance.Config.SchematicName, pos, Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f)), Vector3.one, null);
             }
         }
     }
