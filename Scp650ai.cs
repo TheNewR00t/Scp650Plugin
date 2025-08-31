@@ -103,7 +103,7 @@ namespace Scp650Plugin
                     Target = targets.RandomItem();
                     if (config.TargetingAmbient != -1)
                     {
-                        Exiled.API.Extensions.MirrorExtensions.SendFakeTargetRpc(Player.Get(Target), ReferenceHub.HostHub.networkIdentity, typeof(AmbientSoundPlayer), "RpcPlaySound", new object[]
+                        Exiled.API.Extensions.MirrorExtensions.SendFakeTargetRpc(Player.Get(Target), ReferenceHub.GetHub(Server.Host.ReferenceHub).networkIdentity, typeof(AmbientSoundPlayer), "RpcPlaySound", new object[]
                         {
                             config.TargetingAmbient
                         });
