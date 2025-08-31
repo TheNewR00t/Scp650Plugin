@@ -1,19 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.IO;
-using System.Threading.Tasks;
-using Exiled.API.Interfaces;
 using Exiled.API.Features;
-using MapEditorReborn.Events.Handlers;
-using MapEditorReborn.Events.EventArgs;
-using Interactables;
 using Interactables.Interobjects;
 using Interactables.Interobjects.DoorUtils;
 using UnityEngine;
 using Exiled.Events.EventArgs.Player;
 using Exiled.Events.EventArgs.Scp173;
+using ProjectMER.Events.Handlers;
+using ProjectMER.Events.Arguments;
 
 namespace Scp650Plugin
 {
@@ -85,11 +80,11 @@ namespace Scp650Plugin
                 }
                 Transform transform = possibleDoors.RandomItem().transform;
                 Vector3 pos = transform.position + 0.75f * (UnityEngine.Random.Range(0, 1) * 2f - 1f) * transform.forward;
-                if (Config.LogsItslocation)
+                /*if (Config.LogsItslocation)
                 {
-                    ServerConsole.AddLog(Scp650Plugin.Instance.Config.SchematicName + " Spawned in: " + MapGeneration.RoomIdUtils.RoomAtPosition(pos).name);
-                }
-                MapEditorReborn.API.Features.ObjectSpawner.SpawnSchematic(Scp650Plugin.Instance.Config.SchematicName, pos, Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f)), Vector3.one, null);
+                    ServerConsole.AddLog(Scp650Plugin.Instance.Config.SchematicName + " Spawned in: " + MapGeneration.RoomUtils.RoomAtPosition(pos).name);
+                }*/
+                ProjectMER.Features.ObjectSpawner.SpawnSchematic(Scp650Plugin.Instance.Config.SchematicName, pos, Quaternion.Euler(new Vector3(0f, UnityEngine.Random.Range(0f, 360f), 0f)), Vector3.one);
             }
         }
     }
@@ -100,7 +95,7 @@ namespace Scp650Plugin
         {
             if (ev.Name.Equals(Scp650Plugin.Instance.Config.SchematicName, StringComparison.InvariantCultureIgnoreCase))
             {
-                ev.Schematic.IsStatic = false;
+                ev.Schematic.gameObject.isStatic = false;
                 Scp650Plugin.scp650s.Add(ev.Schematic.gameObject.AddComponent<Scp650ai>());
             }
         }

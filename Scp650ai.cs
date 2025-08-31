@@ -10,6 +10,8 @@ using PlayerRoles.PlayableScps;
 using InventorySystem.Items;
 using InventorySystem.Items.Usables.Scp244;
 using Exiled.API.Features;
+using Exiled.API.Extensions;
+using AdminToys;
 
 namespace Scp650Plugin
 {
@@ -26,9 +28,9 @@ namespace Scp650Plugin
             for (int i = 0; i < @object.transform.childCount; i++)
             {
                 GameObject game = @object.transform.GetChild(i).gameObject;
-                if (game.TryGetComponent<MapEditorReborn.API.Features.Objects.PrimitiveObject>(out MapEditorReborn.API.Features.Objects.PrimitiveObject @object1))
+                if (game.TryGetComponent<PrimitiveObjectToy>(out PrimitiveObjectToy @object1))
                 {
-                    @object1.Primitive.MovementSmoothing = 0;
+                    @object1.MovementSmoothing = 0;
                 }
                 if (game.name.Contains("mixamorig"))
                 {
